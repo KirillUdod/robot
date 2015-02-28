@@ -8,10 +8,10 @@ from err_window import Err_Window
 DICT = {
         'amount': 4000,
         'durat': 30,
-        'firstname': 'Vasya',
-        'lastname': '',
+        'firstname': 'NAme',
+        'lastname': 'Fam',
         'mob_number': '3350090',
-        'email': 'xxx@xxx.xx',
+        'email': 'man@i.ru',
         'ch1': True,
         'ch2': True,
         }
