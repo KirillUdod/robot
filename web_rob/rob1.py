@@ -4,10 +4,11 @@ from ee import EXIT1
 import sys
 from PyQt4 import QtGui, QtCore
 from err_window import Err_Window
-from selenium.common.exceptions import ElementNotVisibleException
+from selenium.common.exceptions import ElementNotVisibleException, NoSuchElementException
 import time
 
-bChb = {'s':None, 'f':None}
+bChb = {'amount':None, 'limit':None}
+bCh = {'amount':None, 'limit':None}
 
 class Rob():
 
@@ -25,8 +26,8 @@ class Rob():
             for am in amount:
                 temp = am.find_element_by_name("sum-selection")
                 if (DICT['amount'] == int(temp.get_attribute('value'))):
-                    bChb['amount'] = True
-                    am.find_element_by_css_selector(".radio-fx.sum-selection").find_element_by_css_selector(".radio").click()
+                    bChb['amount'] = am.find_element_by_css_selector(".radio-fx.sum-selection")
+                    bChb['amount'].find_element_by_css_selector(".radio").click()
                     break
 
             limit =  browser.find_elements_by_css_selector(".limit-option")
@@ -34,15 +35,14 @@ class Rob():
                 temp1 = lm.find_element_by_name("limit-selection")
                 if (DICT['durat'] == int(temp1.get_attribute('value'))):
                     try:
-                        lm.find_element_by_css_selector(".radio-fx.limit-selection").find_element_by_css_selector(".radio").click()
-                        bChb['limit'] = True
+                        bChb['limit'] = lm.find_element_by_css_selector(".radio-fx.limit-selection")
+                        bChb['limit'].find_element_by_css_selector(".radio").click()
                         break
                     except ElementNotVisibleException:
-                        CreateWin("Incorrect limit")
+                        CreateWin("Incorrect limit for this amount")
             return bChb       
         browser = webdriver.Firefox()
         browser.get(LINK)
-
 
         if ((DICT['amount']>=1000) and (DICT['amount']<=5000)):
             browser.find_element_by_id("tab-1").click()
@@ -57,34 +57,44 @@ class Rob():
             browser.find_element_by_id("tab-4").click()
             bCh = ch(browser.find_element_by_id("container-selection-4"), bChb)
         else:
-            print("error1") 
+            CreateWin("Error in the selection price or limit: incorrect value")
 
-#        firstname = browser.find_element_by_id("firstname")
-#        lastname = browser.find_element_by_id("lastname")
-#        mobile = browser.find_element_by_id("mobile")
-#        email = browser.find_element_by_id("email")
-#        chb1 = browser.find_element_by_id("checkbox1")
-#        chb2 = browser.find_element_by_id("checkbox2")
-#            
-#        firstname.send_keys(DICT['firstname'])
-#        lastname.send_keys(DICT['lastname'])
-#        mobile.send_keys(DICT['mob_number'] )
-#        email.send_keys(DICT['email'])
-#        if (DICT['ch1'] == True):
-#            chb1.click()
-#        if (DICT['ch2'] == True):
-#            chb2.click()
-        print (bCh)
-#        if ((bChb1 != True) or (bChb2 != True)):
-#            time.sleep(50)
-#            CreateWin("Error in the selection price or limit")
-#        elif ((firstname.get_attribute('value') != DICT['firstname']) or (firstname.get_attribute('value') == '')):
-#            CreateWin("Error in the field: 'firstname'")
-#        elif ((lastname.get_attribute('value') != DICT['lastname']) or lastname.get_attribute('value') == '')):
-#            CreateWin("Error in the field: 'lastname'")
-#        elif ((mobile.get_attribute('value') != DICT['mob_number']) or mobile.get_attribute('value') == '')):
-#            CreateWin("Error in the field: 'mobile'")
-#        elif ((email.get_attribute('value') != DICT['email']) or (email.get_attribute('email') == '')):
-#            CreateWin("Error in the field: 'email'")
-#        else: CreateWin("Sending form to server")
-#    
+        firstname = browser.find_element_by_id("firstname")
+        lastname = browser.find_element_by_id("lastname")
+        mobile = browser.find_element_by_id("mobile")
+        email = browser.find_element_by_id("email")
+        chb1 = browser.find_element_by_id("checkbox1")
+        chb2 = browser.find_element_by_id("checkbox2")
+        but = browser.find_element_by_id("container-form-submit")
+            
+        firstname.send_keys(DICT['firstname'])
+        lastname.send_keys(DICT['lastname'])
+        mobile.send_keys(DICT['mob_number'] )
+        email.send_keys(DICT['email'])
+        if (DICT['ch1'] == True):
+            chb1.click()
+        if (DICT['ch2'] == True):
+            chb2.click()
+
+        if ((bCh['amount'] is None) or (bCh['limit'] is None)):
+            CreateWin("Error in the selection price or limit: incorrect value")
+        else:
+            try:
+                bCh['amount'].find_element_by_css_selector(".radio-checked")
+                bCh['limit'].find_element_by_css_selector(".radio-checked") 
+            except NoSuchElementException:
+                CreateWin("Error in the selection price or limit: wrong selection")
+        if ((firstname.get_attribute('value') != DICT['firstname']) or (firstname.get_attribute('value') == '')):
+            CreateWin("Error in the field: 'firstname'")
+        elif ((lastname.get_attribute('value') != DICT['lastname']) or (lastname.get_attribute('value') == '')):
+            CreateWin("Error in the field: 'lastname'")
+        elif ((mobile.get_attribute('value') != DICT['mob_number']) or (mobile.get_attribute('value') == '')):
+            CreateWin("Error in the field: 'mobile'")
+        elif ((email.get_attribute('value') != DICT['email']) or (email.get_attribute('email') == '')):
+            CreateWin("Error in the field: 'email'")
+        else:
+#            but.click()
+            CreateWin("Sending form to server")
+
+        
+    
