@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 from err_window import Err_Window
+import sys
+from PyQt4 import QtGui, QtCore
 
 class Rob():
 
@@ -53,8 +55,11 @@ class Rob():
             chb2.click()
 
         if (firstname.get_attribute('value') == DICT['firstname']):
-            tg = Err_Window("ddddddddddd")
+            app = QtGui.QApplication(sys.argv)
+            tg = Err_Window("sssssssssssssss")
             tg.show()
+            app.exec()
+            browser.close()
         lastname.get_attribute('value')
         mobile.get_attribute('value')
         email.get_attribute('value')

@@ -53,8 +53,10 @@ class Rob():
             chb2.click()
 
         if (firstname.get_attribute('value') == DICT['firstname']):
+            print('sss1')
             tg = Err_Window("ddddddddddd")
             tg.show()
+            
         lastname.get_attribute('value')
         mobile.get_attribute('value')
         email.get_attribute('value')
