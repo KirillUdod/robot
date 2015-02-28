@@ -17,6 +17,11 @@ DICT = {
         }
 
 LINK = "http://bbpujcka.cz/"
+#app = QtGui.QApplication(sys.argv)
+#tg = Err_Window("hhhhhhh")
+#tg.show()
+
+#app.exec()
 Rob(DICT, LINK)
 
 
