@@ -1,11 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
-from ee import EXIT1
 import sys
 from PyQt4 import QtGui, QtCore
 from err_window import Err_Window
 from selenium.common.exceptions import ElementNotVisibleException, NoSuchElementException
-import time
+
 
 bChb = {'amount':None, 'limit':None}
 bCh = {'amount':None, 'limit':None}

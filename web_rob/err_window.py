@@ -7,20 +7,16 @@ class Err_Window(QtGui.QDialog):
         QtGui.QDialog.__init__(self)
 
         self.setGeometry(600, 300, 500, 150)
-        self.setWindowTitle("Первое GUI-приложение")
+        self.setWindowTitle("Error")
         self.setWindowIcon(QtGui.QIcon('data/crazy.ico'))
 
-        lTitle = QtGui.QLabel("Пример GUI-приложения", self)
-        lTitle.setAlignment(QtCore.Qt.AlignHCenter)
-        lTitle.setGeometry(100,10,300,20)
         fntMyFont = QtGui.QFont(self)
         fntMyFont.setBold(True)
         fntMyFont.setPixelSize(18)
-        lTitle.setFont(fntMyFont)
 
         lDescription = QtGui.QLabel(msg, self)
         lDescription.setAlignment(QtCore.Qt.AlignHCenter)
-        lDescription.setGeometry(100, 35, 300, 40)
+        lDescription.setGeometry(20, 35, 400, 200)
         fntMyFont2 = QtGui.QFont(self)
         fntMyFont2.setItalic(True)
         fntMyFont2.setPixelSize(14)

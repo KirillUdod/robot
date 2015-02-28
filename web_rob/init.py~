@@ -4,13 +4,12 @@ from rob1 import Rob
 import sys
 from PyQt4 import QtGui, QtCore
 from err_window import Err_Window
-from ee import EXIT1
 
 DICT = {
         'amount': 4000,
-        'durat': 310,
+        'durat': 306,
         'firstname': 'Vasya',
-        'lastname': 'Pupkin',
+        'lastname': '',
         'mob_number': '3350090',
         'email': 'xxx@xxx.xx',
         'ch1': True,
@@ -18,6 +17,11 @@ DICT = {
         }
 
 LINK = "http://bbpujcka.cz/"
+#app = QtGui.QApplication(sys.argv)
+#tg = Err_Window("hhhhhhh")
+#tg.show()
+
+#app.exec()
 Rob(DICT, LINK)
 
 
