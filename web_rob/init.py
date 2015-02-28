@@ -4,6 +4,7 @@ from rob1 import Rob
 import sys
 from PyQt4 import QtGui, QtCore
 from err_window import Err_Window
+from ee import EXIT1
 
 DICT = {
         'amount': 4000,
@@ -16,10 +17,7 @@ DICT = {
         'ch2': True,
         }
 
-browser = webdriver.Firefox()
-browser.get("http://bbpujcka.cz/")
-app = QtGui.QApplication(sys.argv)
-Rob(DICT, browser)
-#tg = Err_Window("ddddddddddd")
-#tg.show()
-#app.exec()
+LINK = "http://bbpujcka.cz/"
+Rob(DICT, LINK)
+
+

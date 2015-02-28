@@ -3,6 +3,7 @@ from PyQt4 import QtGui, QtCore
 
 class Err_Window(QtGui.QDialog):
     def __init__(self,msg):
+
         QtGui.QDialog.__init__(self)
 
         self.setGeometry(600, 300, 500, 150)
@@ -27,6 +28,5 @@ class Err_Window(QtGui.QDialog):
 
         btnQuit = QtGui.QPushButton("Выйти", self)
         btnQuit.setGeometry(150, 75, 200, 30)
-        self.connect(btnQuit, QtCore.SIGNAL('clicked()'), quit)
-
+        self.connect(btnQuit, QtCore.SIGNAL('clicked()'), exit)
 
