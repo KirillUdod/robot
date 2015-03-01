@@ -92,10 +92,10 @@ class Rob():
             CreateWin("Error in the field: 'mobile'")
         elif ((email.get_attribute('value') != DICT['email']) or (email.get_attribute('email') == '')):
             CreateWin("Error in the field: 'email'")
-        elif ((DICT['ch1'] == True) and (not chb1.is_selected())):
+        elif ((DICT['ch1'] == True) and (not DICT['ch1'].is_selected())):
             CreateWin("Error with first checkbox")
-        elif ((DICT['ch2'] == True) and (not chb2.is_selected())):
-            CreateWin("Error with second checkbox")
+        elif ((DICT['ch2'] == True) and (not DICT['ch2'].is_selected())):
+            CreateWin("Error with first checkbox")
         else:
 #            but.click()
             CreateWin("Sending form to server")
