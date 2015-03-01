@@ -11,7 +11,7 @@ DICT = {
         'firstname': 'NAme',
         'lastname': 'Fam',
         'mob_number': '3350090',
-        'email': 'xxx@xxx.xx',
+        'email': 'man@i.ru',
         'ch1': True,
         'ch2': True,
         }
